@@ -14,7 +14,7 @@ function checkPalindrom(string) {
   const normalizeString = string.replaceAll(' ', '').toLowerCase();
   let reverseString = '';
 
-  for (let i = string.length - 1; i >= 0; i--) {
+  for (let i = normalizeString.length - 1; i >= 0; i--) {
     reverseString += normalizeString[i];
   }
 
@@ -24,7 +24,8 @@ function checkPalindrom(string) {
   return false;
 }
 
-checkPalindrom('топот'); // true
+checkPalindrom('топот довод'); // true
 checkPalindrom('ДовОд'); // true
+checkPalindrom('А роза упала на лапу Азора');
 checkPalindrom('Кекс'); // false
 

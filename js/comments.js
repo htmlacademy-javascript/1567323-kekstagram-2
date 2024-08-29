@@ -1,7 +1,7 @@
 import { getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement } from './util.js';
 import { getDataForPhoto, getConstantDataForPhoto } from './data.js';
 
-const {names, MESSAGES} = getDataForPhoto;
+const {NAMES, MESSAGES} = getDataForPhoto;
 const {commentsId} = getConstantDataForPhoto;
 
 
@@ -29,7 +29,7 @@ const createComments = function () {
       id: getCommentsId(),
       avatar: `img/avatar-${getRandomInteger(1, 6)}.svg`,
       message:   getMessages(),
-      name: getRandomArrayElement(names),
+      name: getRandomArrayElement(NAMES),
     };
     userComments.push(comments);
   }

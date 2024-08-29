@@ -1,7 +1,7 @@
 
 const getDataForPhoto = {
 
-  names: [
+  NAMES: [
     'Иван',
     'Артем',
     'Мария',
@@ -38,6 +38,10 @@ const getDataForPhoto = {
 
 const getConstantDataForPhoto = {
 
+  showingPhotos: {
+    LENGTH: 25
+  },
+
   photoId: {
     MIN: 1,
     MAX: 25,
@@ -56,10 +60,6 @@ const getConstantDataForPhoto = {
   commentsId: {
     MIN: 1,
     MAX: 1000,
-  },
-
-  showingPhotos: {
-    LENGTH: 25
   },
 
 };

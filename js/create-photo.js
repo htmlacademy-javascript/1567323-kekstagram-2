@@ -19,4 +19,7 @@ const createPhoto = () => ({
 
 const getPhotosArray = () => Array.from({length: showingPhotos.LENGTH}, createPhoto);
 
-export { getPhotosArray };
+export {
+  getPhotosArray,
+  createPhoto,
+};

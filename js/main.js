@@ -1,6 +1,4 @@
 import { getPhotosArray } from './create-photo.js';
+import './thumbnails.js';
 
-const getPhoto = getPhotosArray;
-
-//eslint-disable-next-line
-console.log(getPhoto());
+console.log(getPhotosArray());

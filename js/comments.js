@@ -19,10 +19,9 @@ const getMessages = function () {
   return message;
 };
 
-
 const createComments = function () {
-  const userComments = [];
   const commentsCounter = getRandomInteger(0, 30);
+  const userComments = [];
 
   for (let i = 0; i < commentsCounter; i++) {
     const comments = {

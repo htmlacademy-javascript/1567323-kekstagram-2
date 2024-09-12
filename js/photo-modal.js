@@ -1,4 +1,5 @@
 import { getPictures } from './create-photo.js';
+import {clearComments, renderCommentsPhoto} from './render-comments.js';
 
 
 const photoModal = document.querySelector('.big-picture');
@@ -8,18 +9,11 @@ const photoModalSocialCaption = photoModal.querySelector('.social__caption');
 
 const likesPhotoModal = photoModal.querySelector('.likes-count');
 
-const commentsPhotoModal = photoModal.querySelector('.social__comments');
-const commentPhotoModal = photoModal.querySelector('.social__comment');
-const socialCommentCount = photoModal.querySelector('.social__comment-count');
-const commentShowPhotoModal = photoModal.querySelector('.social__comment-shown-count');
-const commentTotalPhotoModal = photoModal.querySelector('.social__comment-total-count');
-const commentsLoader = photoModal.querySelector('.comments-loader');
-
 
 const closePhotoModal = () => {
+  clearComments();
   photoModal.classList.add('hidden');
   document.body.classList.remove('modal-open');
-
   detachPhotoModal();
 };
 
@@ -49,22 +43,10 @@ const openPhotoModal = (photoId) => {
   urlPhotoModal.src = currentPhoto.url;
   photoModalSocialCaption.textContent = currentPhoto.description;
   likesPhotoModal.textContent = currentPhoto.likes;
-  commentShowPhotoModal.textContent = currentPhoto.comments;
-  commentTotalPhotoModal.textContent = currentPhoto.comments;
-  commentsPhotoModal.innerHTML = '';
 
-  currentPhoto.comments.forEach((comment) => {
-    const socialComment = commentPhotoModal.cloneNode(true);
-    socialComment.querySelector('.social__picture').src = comment.avatar;
-    socialComment.querySelector('.social__picture').alt = comment.name;
-    socialComment.querySelector('.social__text').textContent = comment.message;
-    commentsPhotoModal.append(socialComment);
-  });
+  renderCommentsPhoto(currentPhoto.comments);
 
   document.body.classList.add('modal-open');
-  socialCommentCount.classList.add('hidden');
-  commentsLoader.classList.add('hidden');
-
   attachModalPhotoEvents();
 };
 

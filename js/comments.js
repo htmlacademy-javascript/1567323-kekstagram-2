@@ -1,6 +1,9 @@
 import { getRandomInteger, createRandomIdFromRangeGenerator, getRandomArrayElement } from './util.js';
 import { getDataForPhoto, getConstantDataForPhoto } from './data.js';
 
+const MAX_COMMENT_LENGTH = 140;
+const ERROR_MESSAGE_COMMENT = `длина комментария не может составлять больше ${MAX_COMMENT_LENGTH} символов`;
+
 const {NAMES, MESSAGES} = getDataForPhoto;
 const {commentsId} = getConstantDataForPhoto;
 
@@ -36,4 +39,12 @@ const createComments = function () {
   return userComments;
 };
 
-export {createComments};
+
+const isValidComment = (value) => value.length <= MAX_COMMENT_LENGTH;
+
+
+export {
+  createComments,
+  isValidComment,
+  ERROR_MESSAGE_COMMENT,
+};

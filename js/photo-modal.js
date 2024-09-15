@@ -1,5 +1,6 @@
 import { getPictures } from './create-photo.js';
 import {clearComments, renderCommentsPhoto} from './render-comments.js';
+import { pressEscapeKey } from './util.js';
 
 
 const photoModal = document.querySelector('.big-picture');
@@ -18,13 +19,13 @@ const closePhotoModal = () => {
 };
 
 const handleEscape = (evt) => {
-  if (evt.key === 'Escape') {
+  if (pressEscapeKey) {
     evt.preventDefault();
     closePhotoModal();
   }
 };
 
-const attachModalPhotoEvents = () => {
+const attachPhotoModalEvents = () => {
   cancelPhotoModal.addEventListener('click', closePhotoModal);
   document.addEventListener('keydown', handleEscape);
 };
@@ -33,7 +34,6 @@ function detachPhotoModal () {
   cancelPhotoModal.removeEventListener('click', closePhotoModal);
   document.removeEventListener('keydown', handleEscape);
 }
-
 
 const openPhotoModal = (photoId) => {
   photoModal.classList.remove('hidden');
@@ -47,7 +47,7 @@ const openPhotoModal = (photoId) => {
   renderCommentsPhoto(currentPhoto.comments);
 
   document.body.classList.add('modal-open');
-  attachModalPhotoEvents();
+  attachPhotoModalEvents();
 };
 
 
